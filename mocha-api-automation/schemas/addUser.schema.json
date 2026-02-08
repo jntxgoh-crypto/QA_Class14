@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "status": { "type": "number" },
+    "userId": { "type": "string" },
+    "username": { "type": "string" },
+    "age": {},
+    "message": { "type": "string" }
+  },
+  "required": ["status", "userId", "username", "message"]
+}

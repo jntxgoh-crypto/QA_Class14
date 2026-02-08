@@ -1,0 +1,13 @@
+{
+  "name": "mocha-api-automation",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "mocha test --timeout 10000"
+  },
+  "devDependencies": {
+    "ajv": "^8.12.0",
+    "axios": "^1.6.0",
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0"
+  }
+}

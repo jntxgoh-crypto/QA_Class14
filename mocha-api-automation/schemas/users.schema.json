@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "status": { "type": "number" },
+    "users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "userId": { "type": "string" },
+          "username": { "type": "string" },
+          "age": { "type": "number" },
+          "protected": { "type": "boolean" }
+        },
+        "required": ["userId", "username", "age", "protected"]
+      }
+    }
+  },
+  "required": ["status", "users"]
+}
