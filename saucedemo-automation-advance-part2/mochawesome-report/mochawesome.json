@@ -1,0 +1,213 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-17T06:53:39.423Z",
+    "end": "2026-02-17T06:53:42.217Z",
+    "duration": 2794,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ad33664a-259a-467f-964b-cbeadcd61a0d",
+      "title": "",
+      "fullFile": "F:\\QA Training\\saucedemo-automation-advance-part2\\test\\login.test.js",
+      "file": "\\test\\login.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+          "title": "SauceDemo Login - POM Implementation",
+          "fullFile": "F:\\QA Training\\saucedemo-automation-advance-part2\\test\\login.test.js",
+          "file": "\\test\\login.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"SauceDemo Login - POM Implementation\"",
+              "fullTitle": "SauceDemo Login - POM Implementation \"before all\" hook in \"SauceDemo Login - POM Implementation\"",
+              "timedOut": false,
+              "duration": 879,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder()\n  .forBrowser('MicrosoftEdge')\n  .setEdgeOptions(new edge.Options())\n  .build();\nloginPage = new LoginPage(driver);\ninventoryPage = new InventoryPage(driver);",
+              "err": {},
+              "uuid": "e30f820d-52eb-45f9-8d02-5feae732c643",
+              "parentUUID": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"before each\" hook in \"SauceDemo Login - POM Implementation\"",
+              "fullTitle": "SauceDemo Login - POM Implementation \"before each\" hook in \"SauceDemo Login - POM Implementation\"",
+              "timedOut": false,
+              "duration": 35,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.open();",
+              "err": {},
+              "uuid": "77dc1f2d-6711-4849-8868-b5c71b48bd02",
+              "parentUUID": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"SauceDemo Login - POM Implementation\"",
+              "fullTitle": "SauceDemo Login - POM Implementation \"after all\" hook in \"SauceDemo Login - POM Implementation\"",
+              "timedOut": false,
+              "duration": 42,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "a06d625c-7fc5-45b9-8e6c-0e47667fad1a",
+              "parentUUID": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Login with valid credentials",
+              "fullTitle": "SauceDemo Login - POM Implementation Login with valid credentials",
+              "timedOut": false,
+              "duration": 509,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login('standard_user', 'secret_sauce');\n    const loaded = await inventoryPage.isLoaded();\n    assert.strictEqual(loaded, true);\n    await takeScreenshot(driver, 'positive_login');",
+              "err": {},
+              "uuid": "26a5acc2-09f8-4935-8e7e-04879eb12da5",
+              "parentUUID": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login with invalid username",
+              "fullTitle": "SauceDemo Login - POM Implementation Login with invalid username",
+              "timedOut": false,
+              "duration": 314,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login('invalid_user', 'secret_sauce');\n    const errorText = await loginPage.getErrorMessage();\n    assert.ok(errorText.includes('Username and password do not match'));\n    await takeScreenshot(driver, 'invalid_username');",
+              "err": {},
+              "uuid": "615f579c-1553-4da4-9a59-900dc60d2433",
+              "parentUUID": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login with wrong password",
+              "fullTitle": "SauceDemo Login - POM Implementation Login with wrong password",
+              "timedOut": false,
+              "duration": 306,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login('standard_user', 'wrong_password');\n    const errorText = await loginPage.getErrorMessage();\n    assert.ok(errorText.includes('Username and password do not match'));\n    await takeScreenshot(driver, 'wrong_password');",
+              "err": {},
+              "uuid": "81a76310-b630-49c1-ac2b-f0b474c7b444",
+              "parentUUID": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login with locked_out_user",
+              "fullTitle": "SauceDemo Login - POM Implementation Login with locked_out_user",
+              "timedOut": false,
+              "duration": 286,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login('locked_out_user', 'secret_sauce');\n    const errorText = await loginPage.getErrorMessage();\n    assert.ok(errorText.includes('Sorry, this user has been locked out'));\n    await takeScreenshot(driver, 'locked_out_user');",
+              "err": {},
+              "uuid": "64153dd5-191d-4635-970d-dc8a71f5288f",
+              "parentUUID": "53ca9b3c-8829-4470-aff7-7551c086b5d6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "26a5acc2-09f8-4935-8e7e-04879eb12da5",
+            "615f579c-1553-4da4-9a59-900dc60d2433",
+            "81a76310-b630-49c1-ac2b-f0b474c7b444",
+            "64153dd5-191d-4635-970d-dc8a71f5288f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1415,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.5"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
