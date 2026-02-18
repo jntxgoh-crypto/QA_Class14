@@ -1,35 +1,43 @@
-const { By, until } = require('selenium-webdriver');
+const { By } = require('selenium-webdriver');
+const BasePage = require('./BasePage');
 
-class LoginPage {
+class LoginPage extends BasePage {
   constructor(driver) {
-    this.driver = driver;
+    super(driver);
 
-    this.usernameField = By.id('user-name');
-    this.passwordField = By.id('password');
-    this.loginButton = By.id('login-button');
-    this.errorMessage = By.css('[data-test="error"]');
+    this.url = 'https://www.saucedemo.com/';
+    this.username = By.id('user-name');
+    this.password = By.id('password');
+    this.loginBtn = By.id('login-button');
+    this.errorMsg = By.css('[data-test="error"]');
   }
 
   async open() {
-    await this.driver.get('https://www.saucedemo.com/');
+    await this.visit(this.url);
+  }
+
+  async setUsername(value) {
+    await this.driver.findElement(this.username).clear();
+    await this.driver.findElement(this.username).sendKeys(value);
+  }
+
+  async setPassword(value) {
+    await this.driver.findElement(this.password).clear();
+    await this.driver.findElement(this.password).sendKeys(value);
+  }
+
+  async clickLogin() {
+    await this.driver.findElement(this.loginBtn).click();
   }
 
   async login(username, password) {
-    await this.driver.findElement(this.usernameField).clear();
-    await this.driver.findElement(this.usernameField).sendKeys(username);
-
-    await this.driver.findElement(this.passwordField).clear();
-    await this.driver.findElement(this.passwordField).sendKeys(password);
-
-    await this.driver.findElement(this.loginButton).click();
+    await this.setUsername(username);
+    await this.setPassword(password);
+    await this.clickLogin();
   }
 
   async getErrorMessage() {
-    await this.driver.wait(
-      until.elementLocated(this.errorMessage),
-      5000
-    );
-    return await this.driver.findElement(this.errorMessage).getText();
+    return await this.getText(this.errorMsg);
   }
 }
 
